@@ -10,8 +10,8 @@ jobs:
   test:
     env:  # it is reasonable for testing to use a specific test database with own credentials (different from production db); it makes sense to define this env vars on job level.
       MONGODB_CLUSTER_ADDRESS: cluster0.15pwqcc.mongodb.net # example value; inject value in code data/database.js
-      MONGODB_USERNAME: temp # inject value in code data/database.js
-      MONGODB_PASSWORD: 147 # inject value in code data/database.js
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }} # access action secret defined in repository settings https://github.com/BitCrux/gha-practice-4/settings/secrets/actions / inject value in code data/database.js
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }} # access action secret defined in repository settings https://github.com/BitCrux/gha-practice-4/settings/secrets/actions / inject value in code data/database.js
       PORT: 8080 # inject value in code playwright.config.js
     environment: testing
     runs-on: ubuntu-latest
